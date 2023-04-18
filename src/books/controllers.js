@@ -85,7 +85,7 @@ const deleteAllBooks = async (req, res) => {
 
     res.status(201).json({
       message: "Successfully deleted all books",
-      deletedBooks: deletedBooks
+      result: deletedBooks
     });
   } catch (error) {
     res.status(501).json({

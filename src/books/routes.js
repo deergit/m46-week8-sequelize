@@ -11,8 +11,8 @@ bookRouter.get("/books/getbook/:title", getBook);
 
 bookRouter.put("/books/updatebook", updateBook);
 
-bookRouter.put("/books/deletebook", deleteBook);
+bookRouter.delete("/books/deletebook", deleteBook);
 
-bookRouter.put("/books/deleteallbooks", deleteAllBooks);
+bookRouter.delete("/books/deleteallbooks", deleteAllBooks);
 
 module.exports = bookRouter;

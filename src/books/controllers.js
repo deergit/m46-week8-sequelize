@@ -14,7 +14,8 @@ const addBook = async (req, res) => {
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
@@ -25,16 +26,17 @@ const getAllBooks = async (req, res) => {
 
     res.status(200).json({
       message: "Success",
-      books: bookList
+      items: bookList
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
 
-const getBook = async (req, res) => {
+const getSingleBookByTitle = async (req, res) => {
   try {
     const book = await Book.findOne({ where: { title: req.params.title } });
 
@@ -44,7 +46,8 @@ const getBook = async (req, res) => {
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
@@ -55,11 +58,12 @@ const updateBook = async (req, res) => {
 
     res.status(201).json({
       message: "Success",
-      book: updatedBook
+      updateResult: updatedBook
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
@@ -69,12 +73,13 @@ const deleteBook = async (req, res) => {
     const deletedBook = await Book.destroy({ where: { title: req.body.title } });
 
     res.status(201).json({
-      message: "Success",
-      book: deletedBook
+      message: "Successfully deleted",
+      result: deletedBook
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
@@ -89,7 +94,8 @@ const deleteAllBooks = async (req, res) => {
     });
   } catch (error) {
     res.status(501).json({
-      message: error.message
+      errorMessage: error.message,
+      error: error
     });
   }
 }
@@ -97,7 +103,7 @@ const deleteAllBooks = async (req, res) => {
 module.exports = {
   addBook,
   getAllBooks,
-  getBook,
+  getSingleBookByTitle,
   updateBook,
   deleteBook,
   deleteAllBooks

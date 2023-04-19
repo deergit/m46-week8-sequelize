@@ -3,7 +3,7 @@ const Author = require("./model");
 const addAuthor = async (req, res) => {
   try {
     const newAuthor = await Author.create({
-      author: req.body.authorName
+      authorName: req.body.authorName
     });
 
     res.status(201).json({

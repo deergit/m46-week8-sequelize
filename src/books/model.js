@@ -13,6 +13,6 @@ const Book = connection.define("Book", {
   genre: {
     type: DataTypes.STRING
   }
-});
+}, { timestamps: false });
 
 module.exports = Book;

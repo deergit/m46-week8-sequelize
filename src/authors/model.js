@@ -7,6 +7,6 @@ const Author = connection.define("Author", {
     allowNull: false,
     unique: true
   }
-});
+}, { timestamps: false });
 
 module.exports = Author;

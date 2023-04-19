@@ -88,7 +88,7 @@ const deleteAllBooks = async (req, res) => {
   try {
     const deletedBooks = await Book.destroy({ truncate: true });
 
-    res.status(201).json({
+    res.status(202).json({
       message: "Successfully deleted all books",
       result: deletedBooks
     });

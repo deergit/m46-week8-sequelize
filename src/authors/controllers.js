@@ -20,11 +20,11 @@ const addAuthor = async (req, res) => {
 
 const getAuthorAndBooks = async (req, res) => {
   try {
-    console.log("This is working!");
+    const author = await Author.findOne({ where: { authorName: req.params.authorname } }, { include: ["Book"] });
 
     res.status(200).json({
       message: "Success",
-      items: bookList
+      author: author
     });
   } catch (error) {
     res.status(501).json({

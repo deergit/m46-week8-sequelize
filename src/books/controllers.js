@@ -1,6 +1,5 @@
 const Book = require("./model");
 const Author = require("../authors/model");
-const Genre = require("../genres/model");
 
 const addBook = async (req, res) => {
   try {

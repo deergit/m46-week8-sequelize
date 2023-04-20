@@ -21,11 +21,11 @@ const addGenre = async (req, res) => {
 
 const getBooksByGenre = async (req, res) => {
   try {
-    const bookList = await Genre.findAll({ where: { genre: req.params.genre }, include: Book })
+    const bookList = await Genre.findOne({ where: { genre: req.params.genre }, include: Book })
 
     res.status(200).json({
       message: "Success",
-      books: bookList
+      booksByGenre: bookList.Books
     });
   } catch (error) {
     res.status(501).json({

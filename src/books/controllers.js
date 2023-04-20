@@ -61,7 +61,8 @@ const getSingleBookByTitle = async (req, res) => {
 
 const updateBook = async (req, res) => {
   try {
-    const updatedBook = await Book.update({ author: req.body.newAuthor }, { where: { title: req.body.title } });
+    const newAuthorId = await Author.findOne({ where: { authorName: req.bodynewAuthor } });
+    const updatedBook = await Book.update({ AuthorID: newAuthorId.dataValues.AuthorID, author: req.body.newAuthor }, { where: { title: req.body.title } });
 
     res.status(201).json({
       message: "Success",

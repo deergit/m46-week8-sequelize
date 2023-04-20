@@ -19,7 +19,7 @@ const addGenre = async (req, res) => {
   }
 }
 
-const getBooksByGenre = async (req, res) => {
+const getAllBooksByGenre = async (req, res) => {
   try {
     const bookList = await Genre.findOne({ where: { genre: req.params.genre }, include: Book })
 
@@ -37,5 +37,5 @@ const getBooksByGenre = async (req, res) => {
 
 module.exports = {
   addGenre,
-  getBooksByGenre
+  getAllBooksByGenre
 }

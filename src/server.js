@@ -12,14 +12,8 @@ const port = process.env.PORT || 5001;
 app.use(express.json());
 
 const syncTables = () => {
-  Author.hasMany(Book, { as: "books" });
-  Book.belongsTo(Author, {
-    foreignKey: {
-      name: "id",
-      as: "authorID",
-      allowNull: false
-    }
-  });
+  Author.hasMany(Book);
+  Book.belongsTo(Author);
   Author.sync();
   Book.sync();
 }

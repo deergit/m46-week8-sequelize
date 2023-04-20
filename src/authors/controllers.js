@@ -20,7 +20,7 @@ const addAuthor = async (req, res) => {
 
 const getAuthorAndBooks = async (req, res) => {
   try {
-    const author = await Author.findOne({ where: { authorName: req.params.authorname } }, { include: ["Book"] });
+    const author = await Author.findOne({ where: { authorName: req.params.authorname } });
 
     res.status(200).json({
       message: "Success",

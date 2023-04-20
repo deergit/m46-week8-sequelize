@@ -22,7 +22,7 @@ const syncTables = () => {
 
   Author.sync();
   Genre.sync();
-  Book.sync({ alter: true });
+  Book.sync();
 }
 
 app.use(bookRouter);

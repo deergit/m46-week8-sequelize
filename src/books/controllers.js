@@ -5,7 +5,8 @@ const addBook = async (req, res) => {
     const newBook = await Book.create({
       title: req.body.title,
       author: req.body.author,
-      genre: req.body.genre
+      genre: req.body.genre,
+      AuthorId: req.body.AuthorId
     });
 
     res.status(201).json({

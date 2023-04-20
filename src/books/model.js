@@ -8,8 +8,7 @@ const Book = connection.define("Book", {
     unique: true
   },
   author: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING
   },
   genre: {
     type: DataTypes.STRING

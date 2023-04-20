@@ -1,4 +1,5 @@
 const Author = require("./model");
+const Book = require("../books/model");
 
 const addAuthor = async (req, res) => {
   try {
@@ -20,7 +21,7 @@ const addAuthor = async (req, res) => {
 
 const getAuthorAndBooks = async (req, res) => {
   try {
-    const author = await Author.findOne({ where: { authorName: req.params.authorname } });
+    const author = await Author.findOne({ where: { authorName: req.params.authorname }, include: Book });
 
     res.status(200).json({
       message: "Success",

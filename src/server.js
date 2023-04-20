@@ -14,8 +14,9 @@ app.use(express.json());
 const syncTables = () => {
   Author.hasMany(Book);
   Book.belongsTo(Author);
+
   Author.sync();
-  Book.sync();
+  Book.sync({ alter: true });
 }
 
 app.use(bookRouter);

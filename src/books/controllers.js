@@ -1,15 +1,18 @@
 const Book = require("./model");
 const Author = require("../authors/model");
+const Genre = require("../genres/model");
 
 const addBook = async (req, res) => {
   try {
     const authorName = await Author.findOne({ where: { id: req.body.AuthorId } });
+    const genreName = await Genre.findOne({ where: { id: req.body.GenreId } });
 
     const newBook = await Book.create({
       title: req.body.title,
       author: authorName.dataValues.authorName,
-      genre: req.body.genre,
-      AuthorId: req.body.AuthorId
+      genre: genreName.dataValues.genre,
+      AuthorId: req.body.AuthorId,
+      GenreId: req.body.GenreId
     });
 
     res.status(201).json({
@@ -58,7 +61,12 @@ const getSingleBookByTitle = async (req, res) => {
 
 const updateBook = async (req, res) => {
   try {
-    const updatedBook = await Book.update({ author: req.body.newAuthor }, { where: { title: req.body.title } });
+    const newAuthorId = await Author.findOne({ where: { authorName: req.body.newAuthor } });
+    console.log(newAuthorId.dataValues.id)
+    const updatedBook = await Book.update({
+      AuthorId: newAuthorId.dataValues.id,
+      author: req.body.newAuthor },
+      { where: { title: req.body.title } });
 
     res.status(201).json({
       message: "Success",

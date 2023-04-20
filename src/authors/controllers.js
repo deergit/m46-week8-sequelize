@@ -25,8 +25,10 @@ const getAuthorAndBooks = async (req, res) => {
 
     res.status(200).json({
       message: "Success",
-      author: author
-    });
+      author: {
+        id: author.id,
+        books: author.Books
+    }});
   } catch (error) {
     res.status(501).json({
       errorMessage: error.message,

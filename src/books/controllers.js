@@ -58,10 +58,11 @@ const getSingleBookByTitle = async (req, res) => {
 const updateBook = async (req, res) => {
   try {
     const newAuthorId = await Author.findOne({ where: { authorName: req.body.newAuthor } });
-    console.log(newAuthorId.dataValues.id)
+
     const updatedBook = await Book.update({
       AuthorId: newAuthorId.dataValues.id,
-      author: req.body.newAuthor },
+      author: req.body.newAuthor
+    },
       { where: { title: req.body.title } });
 
     res.status(201).json({
